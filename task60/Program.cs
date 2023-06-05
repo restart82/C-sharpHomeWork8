@@ -6,26 +6,26 @@ int[,,] Get3DArray(int m, int n, int p, int minValue, int maxValue)
     int[,,] array = new int[m, n, p];
     int[] numbers = new int[m * n * p];
     int q = 0;
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < m; i++) //Заполняем i
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < n; j++) //Заполняем j
         {
-            for (int k = 0; k < p; k++)
+            for (int k = 0; k < p; k++) //Заполняем k
             {
-                bool valid = false;
-                while (valid == false)
-                {
+                bool flag = false;
+                while (flag == false)   //Проверка на уникальность. Будем сравнивать новый элемент с каждым предыдущим.
+                {                       //Каждый элемент сохраним в одномерный массив для удобства сравнения новых элементов.
                     array[i, j, k] = new Random().Next(minValue, maxValue + 1);
                     for (int w = 0; w <= q; w++)
                     {
                         if (array[i, j, k] == numbers[w])
                         {
-                            valid = false;
+                            flag = false;
                             break;
                         }
                         else
                         {
-                            valid = true;
+                            flag = true;
                         }
                     }
                 }
